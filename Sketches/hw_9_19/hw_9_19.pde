@@ -45,15 +45,15 @@ void draw() {
 
 void endGame() {
   // egt = end game time
-  int egt = 0; 
+  int egt = 1; 
   background(104, 66, 244);
-  textSize(200);
-    text("Game", 50, 50);
-    text("Over", 50, 400);
-  while (egt != 1000) {
+  textSize(175);
+  text("Game", 50, 200);
+  text("Over", 85, 400);
+  while (egt != 20000) {
     egt += 1;
   }
-  if (egt == 1000) {
+  if (egt == 20000) {
     exit();
   }
 }
