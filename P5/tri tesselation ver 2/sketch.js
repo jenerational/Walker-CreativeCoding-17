@@ -1,4 +1,6 @@
 //ASSIGNEMNT 10.05.17
+// Partner: Liam Panero
+
 //Array for Triangle Points
 var tPoint = [];
 var s=0;//variable to make 3rd Point mouseX,mouseY
