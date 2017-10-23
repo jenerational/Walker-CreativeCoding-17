@@ -74,14 +74,14 @@ function draw(){
     // if ready to draw
     if (drawTime == true && intro == true) {
         background(256);
-        image(paintR, 50, 50);
-        image(paintY, 50, 250);
-        image(paintB, 50, 450);
+        image(paintR, 75, 50);
+        image(paintY, 75, 250);
+        image(paintB, 75, 450);
         if (j < 490) {
             j++; 
         }
         else {
-            if (mWx != 20) {
+            if (mWx != 35) {
                 mWx++;
             }
             else {
@@ -106,24 +106,12 @@ function draw(){
     }
     else if (intro == false) {
         background(255); 
-        image(paintR, 50, 50);
-        image(paintY, 50, 250);
-        image(paintB, 50, 450);
+        image(paintR, 75, 50);
+        image(paintY, 75, 250);
+        image(paintB, 75, 450);
         for (var i = 0; i < 3; i++) {
-            mice[i].display(); 
             puddles[i].display();
-        }
-        if (keyIsDown('W')) {
-            mice[mSel].y -= 5;
-        }
-        else if (keyIsDown('S')) {
-            mice[mSel].y += 5;
-        }
-        else if (keyIsDown('A')) {
-            mice[mSel].x -= 5; 
-        }
-        else if (keyIsDown('D')) {
-            mice[mSel].x += 5;
+            mice[i].display(); 
         }
     }
 }
@@ -219,30 +207,30 @@ function Mouse(letter) {
     }
     this.check = function() {
         for (var i=0; i<3; i++) {
-            if (this.x == puddles[i].x+puddles[i].width/2 || this.x == puddles[i].x-puddles[i].width/2) {
-                if (this.y == puddles[i].y+puddles[i].width/2 || this.y == puddles[i].y-puddles[i].width/2) {
+            if (this.x <= puddles[i].x+puddles[i].width/2 && this.x >= puddles[i].x-puddles[i].width/2) {
+                if (this.y <= puddles[i].y+puddles[i].width/2 && this.y >= puddles[i].y-puddles[i].width/2) {
                     if (this.let == 'R') {
                         if (i == 1) {
-                            puddles[i].color(255, 165, 0);
+                            puddles[i].color = color(255, 165, 0);
                         }
                         else if (i == 2) {
-                            puddles[i].color(148,0,211)
+                            puddles[i].color = color(148,0,211);
                         }
                     }
                     else if (this.let == 'Y') {
                         if (i == 0) {
-                            puddles[i].color(255, 165, 0);
+                            puddles[i].color = color(255, 165, 0);
                         }
                         else if (i == 2) {
-                            puddles[i].color(0,255,0)
+                            puddles[i].color = color(0,255,0);
                         }
                     }
                     else if (this.let == 'B') {
                         if (i == 0) {
-                            puddles[i].color(148,0,211)
+                            puddles[i].color = color(148,0,211);
                         }
                         else if (i == 1) {
-                            puddles[i].color(0,255,0)
+                            puddles[i].color = color(0,255,0);
                         }
                     }
                 }
@@ -250,6 +238,7 @@ function Mouse(letter) {
         }
     }
 }
+
 //  PUDDLES CLASS
 function Puddle(rVal, bVal, gVal) {
     this.color = color(rVal, bVal, gVal); 
@@ -260,7 +249,7 @@ function Puddle(rVal, bVal, gVal) {
     this.display = function() {
         this.height += random(-1, 1);
         this.width += random(-1, 1);
-        strokeWeight(2);
+        strokeWeight(1);
         fill(this.color); 
         ellipse(this.x, this.y, this.width, this.height);
     }
