@@ -42,7 +42,6 @@ function preload() {
     mY = loadImage("assets/mouseY.png"); 
     mB = loadImage("assets/mouseB.png"); 
     // mice feet photos
-
 }
 
 function setup(){
